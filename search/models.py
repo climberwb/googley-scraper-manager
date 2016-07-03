@@ -10,7 +10,7 @@ class Site(models.Model):
 # # Create your models here.
 class Search(models.Model):
     query = models.CharField(blank=False,max_length=100)
-    url =models.CharField(max_length=100)
+    # url =models.CharField(max_length=100)
     # https://docs.djangoproject.com/en/1.9/ref/contrib/postgres/fields/
     # site = models.CharField(blank=False,max_length=100)
     site = models.ForeignKey(Site)
@@ -20,6 +20,9 @@ class Search(models.Model):
 class Result(models.Model):
     url = models.CharField(blank=False,max_length=100)
     site = models.ForeignKey(Search)
+    content = models.TextField(blank=True)
+    def __unicode__(self):
+	    return self.url
 
 
     
